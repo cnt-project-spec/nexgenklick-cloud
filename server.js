@@ -163,6 +163,7 @@ app.post('/login', async (req, res) => {
     res.send('Error: ' + err.message);
   }
 });
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
