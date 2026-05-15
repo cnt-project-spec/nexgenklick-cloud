@@ -22,6 +22,7 @@ export class Signup {
 
   signup(){
     console.log("Test \n"+ JSON.stringify(this.student) + " \nEnd ");
+    console.log("test");
   }
 
 
