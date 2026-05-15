@@ -1,0 +1,108 @@
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">New Internship</p>
+
+                <form class="mx-1 mx-md-4">
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Internship title</label>
+                      <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="job.Title" name="title"/>
+                      
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Job description</label><br>
+                      <textarea name="job" rows="9" cols="90" id="jobDescription" placeholder="Write your Job Description" [(ngModel)]="job.Description" name="description"></textarea>                      
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Required skills</label>
+                      <input type="text" id="form3Example3c" class="form-control" [(ngModel)]="job.Skills" name="skills"/>
+                      
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c" >Location</label>
+                      <input type="text" id="form3Example3c" class="form-control" [(ngModel)]="job.Location" name="Location"/>                      
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Phone Number</label>
+                      <input type="Phone" id="form3Example3c" class="form-control" [(ngModel)]="job.Phone" name="Phone" />                      
+                    </div>
+                  </div> <br>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Work Mode</label>
+                      <select id="workmode" name="workmode" [(ngModel)]="job.WorkMode">
+                        <option value="">Choose one </option>
+                        <option value="Onsite">Onsite</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Hybrid">Hybrid</option>
+                        </select>                      
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Start Date</label><br>
+                      <input type="date" id="form3Example3c" class="form-control" [(ngModel)]="job.StartDate" name="StartDate" />
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">End Date</label><br>
+                      <input type="date" id="form3Example3c" class="form-control" [(ngModel)]="job.EndDate" name="EndDate"/>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c"  >Application deadline</label><br>
+                      <input type="date" id="form3Example3c" class="form-control" [(ngModel)]="job.Deadline" name="deadline" />
+                    </div>
+                  </div>
+
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" (click)="Post()">Post</button>
+                  </div>
+
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
