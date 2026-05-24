@@ -1,6 +1,7 @@
 import { EmployerModel } from "./EmployerModel";
 
 export class InternModel{
+    InternID?:number;
     Title!: string;
     Description!: string;
     Skills!: string;

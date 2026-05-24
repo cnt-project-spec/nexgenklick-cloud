@@ -31,4 +31,13 @@ export class AppService {
       return profile;
       
   }
+
+  getInternDetails(internId: any): InternModel{
+    var internUrl= this.mainURl+"/api/aplication/{"+internId+"}/status";
+    console.log("Test intern ID "+ internId);
+    // this.http.get(internUrl)
+
+    return this.dummyData.JobsGenerator()[1];
+
+  }
 }

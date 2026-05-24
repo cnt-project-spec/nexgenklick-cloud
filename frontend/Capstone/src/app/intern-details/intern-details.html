@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <div class="row g-4">
+    
+    <!-- Left Column -->
+    <div class="col-md-8">
+      <div class="card p-4 shadow-sm">
+        <h2 class="fw-bold">{{intern.Title}}</h2>
+        <p class="text-muted">{{intern.Company?.Name}}</p>
+
+        <div class="mb-3">
+          <span class="badge bg-info">{{intern.Type}}</span>
+          <span class="badge bg-dark">{{intern.Location}}</span>
+        </div>
+
+        <h5>Description</h5>
+        <p>{{intern.Description}} </p>      
+
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h5 class="fw-bold">Job Summary</h5>
+        <p><strong>Salary:</strong> {{intern.Salary}}</p>
+        <p><strong>Deadline:</strong> {{intern.Deadline}}</p>
+
+        <button class="btn btn-success w-100 mt-3">
+          Apply Now
+        </button>
+
+        <!-- <button class="btn btn-outline-primary w-100 mt-2"
+                [routerLink]="['/jobs']">
+          Back to Jobs
+        </button> -->
+      </div>
+    </div>
+
+  </div>
+</div>

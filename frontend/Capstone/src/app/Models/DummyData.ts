@@ -17,7 +17,8 @@ export class DummyData{
             Deadline:   new Date("2026-06-30"),
             Salary: 80000,
             Type: "Full-Time",
-            Company: this.CompanyGenerator()
+            Company: this.CompanyGenerator(),
+            InternID: 932,
         },
     
         {
@@ -32,7 +33,8 @@ export class DummyData{
             Deadline:   new Date("2026-06-30"),
             Salary: 70000,
             Type: "Part-Time",
-            Company: this.CompanyGenerator()
+            Company: this.CompanyGenerator(),
+            InternID: 1234
         },
     
         {
@@ -47,7 +49,8 @@ export class DummyData{
             Deadline:   new Date("2026-06-30"), 
             Salary: 90000,
             Type: "Contract",
-            Company: this.CompanyGenerator()
+            Company: this.CompanyGenerator(),
+            InternID: 236475
         }];       
 
         return jobs;
