@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { JobModel } from './Models/JobModel';
+import { InternModel } from './Models/InternModel';
 import { DummyData } from './Models/DummyData';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,7 +11,7 @@ export class AppService {
   private mainURl= "https://localhost:4200";
   
   constructor(private http:HttpClient){}
-  GetJobs(): JobModel{
+  GetJobs(): InternModel[]{
     var jobsUrl=this.mainURl+"/api/jobs"
 
     
@@ -21,5 +21,14 @@ export class AppService {
     // if(response)
     
     return this.dummyData.JobsGenerator()
+  }
+
+  getProfile(userId:number){
+      var profileUrl=this.mainURl+"/api/profile/"+userId;
+
+      var profile=this.dummyData.ProfileGenerator();
+
+      return profile;
+      
   }
 }

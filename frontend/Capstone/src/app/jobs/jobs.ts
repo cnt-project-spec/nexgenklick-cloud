@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { AppService } from '../app-service';
+import { InternModel } from '../Models/InternModel';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-jobs',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './jobs.html',
   styleUrl: './jobs.css',
 })
 export class Jobs {
-  jobs: any;
+  jobs: InternModel[] =[];
   constructor(private appService: AppService) {}
 
   ngOnInit(): void{

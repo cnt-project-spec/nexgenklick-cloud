@@ -1,4 +1,5 @@
-export class CompanyModel{
+export class EmployerModel{
+    employer_Id?: number;
     Name!: string;
     ContactPerson!: string;
     Email!: string;

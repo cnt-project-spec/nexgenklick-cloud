@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CompanyModel } from '../Models/CompanyModel';
+import { EmployerModel } from '../Models/EmployerModel';
 
 @Component({
   selector: 'app-register-company',
@@ -9,7 +9,7 @@ import { CompanyModel } from '../Models/CompanyModel';
   styleUrl: './register-company.css',
 })
 export class RegisterCompany {
-  company:  CompanyModel = new CompanyModel();
+  company:  EmployerModel = new EmployerModel();
 
   register(){
     console.log("Test \n"+ JSON.stringify(this.company) + " \nEnd ");

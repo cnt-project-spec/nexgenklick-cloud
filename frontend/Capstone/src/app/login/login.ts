@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LoginModel } from '../Models/Login';
+import { UserModel } from '../Models/UserModel';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { LoginModel } from '../Models/Login';
   styleUrl: './login.css',
 })
 export class Login {
-  logIn: LoginModel =new LoginModel();
+  logIn: UserModel =new UserModel();
 
   login(){
     console.log("Test \n"+ JSON.stringify(this.logIn) + " \nEnd ");

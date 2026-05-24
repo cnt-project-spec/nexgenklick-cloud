@@ -12,7 +12,6 @@
                 <form class="mx-1 mx-md-4">
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example1c">Internship title</label>
                       <input type="text" id="form3Example1c" class="form-control" [(ngModel)]="job.Title" name="title"/>
@@ -21,7 +20,6 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Job description</label><br>
                       <textarea name="job" rows="9" cols="90" id="jobDescription" placeholder="Write your Job Description" [(ngModel)]="job.Description" name="description"></textarea>                      
@@ -29,7 +27,6 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Required skills</label>
                       <input type="text" id="form3Example3c" class="form-control" [(ngModel)]="job.Skills" name="skills"/>
@@ -38,7 +35,6 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c" >Location</label>
                       <input type="text" id="form3Example3c" class="form-control" [(ngModel)]="job.Location" name="Location"/>                      
@@ -46,15 +42,20 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Phone Number</label>
-                      <input type="Phone" id="form3Example3c" class="form-control" [(ngModel)]="job.Phone" name="Phone" />                      
+                      <input type="tel" id="form3Example3c" class="form-control" [(ngModel)]="job.Phone" name="Phone" />                      
                     </div>
-                  </div> <br>
+                  </div> 
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Salary</label>
+                      <input type="number" id="form3Example3c" class="form-control" [(ngModel)]="job.Salary" name="Salary" />                      
+                    </div>
+                  </div>
+                  <br>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Work Mode</label>
                       <select id="workmode" name="workmode" [(ngModel)]="job.WorkMode">
@@ -64,10 +65,18 @@
                         <option value="Hybrid">Hybrid</option>
                         </select>                      
                     </div>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Work Type</label>
+                      <select id="workmode" name="workmode" [(ngModel)]="job.Type">
+                        <option value="">Choose one </option>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Contract">Contract</option>
+                        </select>                      
+                    </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">Start Date</label><br>
                       <input type="date" id="form3Example3c" class="form-control" [(ngModel)]="job.StartDate" name="StartDate" />
@@ -75,7 +84,6 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c">End Date</label><br>
                       <input type="date" id="form3Example3c" class="form-control" [(ngModel)]="job.EndDate" name="EndDate"/>
@@ -83,7 +91,6 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="form3Example3c"  >Application deadline</label><br>
                       <input type="date" id="form3Example3c" class="form-control" [(ngModel)]="job.Deadline" name="deadline" />

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { JobModel } from '../Models/JobModel';
+import { InternModel } from '../Models/InternModel';
 
 @Component({
   selector: 'app-create-jobs',
@@ -9,7 +9,7 @@ import { JobModel } from '../Models/JobModel';
   styleUrl: './create-jobs.css',
 })
 export class CreateJobs {
-  job: JobModel= new JobModel();
+  job: InternModel = new InternModel();
 
   Post(){
     console.log("Test \n"+ JSON.stringify(this.job) + " \nEnd ");
