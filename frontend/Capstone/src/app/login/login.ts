@@ -9,10 +9,7 @@ import { LoginModel } from '../Models/Login';
   styleUrl: './login.css',
 })
 export class Login {
-  logIn: LoginModel ={
-    Email: "",
-    Password: ""
-  };
+  logIn: LoginModel =new LoginModel();
 
   login(){
     console.log("Test \n"+ JSON.stringify(this.logIn) + " \nEnd ");

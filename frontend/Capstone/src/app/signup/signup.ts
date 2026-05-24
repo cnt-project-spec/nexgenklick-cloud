@@ -9,16 +9,7 @@ import { StudentModel } from '../Models/StudentModel';
   styleUrl: './signup.css',
 })
 export class Signup {
-  student: StudentModel ={
-    FullName: "",
-    Email: "",
-    Program: "",
-    Institution: "",
-    Resume: "",
-    Password: "",
-    ConfirmPassword: "",
-    PhoneNumber: ""
-  } ;
+  student: StudentModel = new StudentModel();
 
   signup(){
     console.log("Test \n"+ JSON.stringify(this.student) + " \nEnd ");

@@ -9,16 +9,7 @@ import { CompanyModel } from '../Models/CompanyModel';
   styleUrl: './register-company.css',
 })
 export class RegisterCompany {
-  company:  CompanyModel ={
-    Name: "",
-    ContactPerson: "",
-    Email: "",
-    Phone: "",
-    Industry: "",
-    Address: "",
-    Website: ""
-
-  }
+  company:  CompanyModel = new CompanyModel();
 
   register(){
     console.log("Test \n"+ JSON.stringify(this.company) + " \nEnd ");

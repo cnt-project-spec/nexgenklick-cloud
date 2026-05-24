@@ -9,17 +9,7 @@ import { JobModel } from '../Models/JobModel';
   styleUrl: './create-jobs.css',
 })
 export class CreateJobs {
-  job: JobModel ={
-    Title: "",
-    Description: "",
-    Skills: "",
-    Location: "",
-    Phone: "",
-    WorkMode: "",
-    StartDate: new Date(),
-    EndDate: new Date,
-    Deadline: new Date
-  }
+  job: JobModel= new JobModel();
 
   Post(){
     console.log("Test \n"+ JSON.stringify(this.job) + " \nEnd ");
