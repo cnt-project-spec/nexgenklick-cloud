@@ -2,228 +2,99 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
 
-/* ---------------- USERS ---------------- */
+let users = [];
+let applications = [];
 
-let users = [
-    {
-        user_id: 1,
-        name: "Diba",
-        email: "diba@test.com",
-        role: "student"
-    }
-];
-
-/* ---------------- APPLICATIONS ---------------- */
-
-let applications = [
-    {
-        application_id: 1,
-        student_name: "Diba",
-        company: "NexGenKlick",
-        position: "Backend Intern",
-        status: "Pending"
-    }
-];
-
-/* ---------------- HOME ---------------- */
-
+// Home Route
 app.get("/", (req, res) => {
-    res.send("Backend is working!");
+  res.send("Internship Portal Backend Running");
 });
 
-/* ---------------- GET USERS ---------------- */
+// Register User
+app.post("/api/users", (req, res) => {
+  const user = {
+    id: users.length + 1,
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role
+  };
 
-app.get("/users", (req, res) => {
-    res.json(users);
+  users.push(user);
+  res.json(user);
 });
 
-/* ---------------- ADD USER ---------------- */
+// Get Users
+app.get("/api/users", (req, res) => {
+  res.json(users);
+});
 
-app.post("/users", (req, res) => {
+// Delete User
+app.delete("/api/users/:id", (req, res) => {
+  const id = parseInt(req.params.id);
 
-    const newUser = {
-        user_id: users.length + 1,
-        name: req.body.name,
-        email: req.body.email,
-        role: req.body.role
-    };
+  users = users.filter(user => user.id !== id);
 
-    users.push(newUser);
+  res.json({
+    message: "User deleted successfully"
+  });
+});
 
-    res.json({
-        message: "User added",
-        user: newUser
+// Internship Application
+app.post("/api/applications", (req, res) => {
+  const application = {
+    id: applications.length + 1,
+    studentName: req.body.studentName,
+    companyName: req.body.companyName,
+    position: req.body.position,
+    status: "Pending"
+  };
+
+  applications.push(application);
+  res.json(application);
+});
+
+// Get Applications
+app.get("/api/applications", (req, res) => {
+  res.json(applications);
+});
+
+// Accept Application
+app.put("/api/applications/:id/accept", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const application = applications.find(app => app.id === id);
+
+  if (application) {
+    application.status = "Accepted";
+    res.json(application);
+  } else {
+    res.status(404).json({
+      message: "Application not found"
     });
+  }
 });
 
-/* ---------------- DELETE USER ---------------- */
+// Reject Application
+app.put("/api/applications/:id/reject", (req, res) => {
+  const id = parseInt(req.params.id);
 
-app.delete("/users/:id", (req, res) => {
+  const application = applications.find(app => app.id === id);
 
-    const id = parseInt(req.params.id);
-
-    users = users.filter(user =>
-        user.user_id !== id
-    );
-
-    res.json({
-        message: "User deleted"
+  if (application) {
+    application.status = "Rejected";
+    res.json(application);
+  } else {
+    res.status(404).json({
+      message: "Application not found"
     });
+  }
 });
-
-/* ---------------- EDIT USER ---------------- */
-
-app.put("/users/:id", (req, res) => {
-
-    const id = parseInt(req.params.id);
-
-    const user = users.find(user =>
-        user.user_id === id
-    );
-
-    if (user) {
-
-        user.name = req.body.name;
-        user.email = req.body.email;
-        user.role = req.body.role;
-
-        res.json({
-            message: "User updated"
-        });
-
-    } else {
-
-        res.status(404).json({
-            message: "User not found"
-        });
-    }
-});
-
-/* ---------------- SEARCH USER ---------------- */
-
-app.get("/search/:name", (req, res) => {
-
-    const name = req.params.name.toLowerCase();
-
-    const filteredUsers = users.filter(user =>
-        user.name.toLowerCase().includes(name)
-    );
-
-    res.json(filteredUsers);
-});
-
-/* ---------------- LOGIN ---------------- */
-
-app.post("/login", (req, res) => {
-
-    const email = req.body.email;
-
-    const foundUser = users.find(user =>
-        user.email === email
-    );
-
-    if (foundUser) {
-
-        res.json({
-            success: true,
-            message: "Login successful"
-        });
-
-    } else {
-
-        res.json({
-            success: false,
-            message: "User not found"
-        });
-    }
-});
-
-/* ---------------- GET APPLICATIONS ---------------- */
-
-app.get("/applications", (req, res) => {
-    res.json(applications);
-});
-
-/* ---------------- ADD APPLICATION ---------------- */
-
-app.post("/applications", (req, res) => {
-
-    const newApplication = {
-        application_id: applications.length + 1,
-        student_name: req.body.student_name,
-        company: req.body.company,
-        position: req.body.position,
-        status: "Pending"
-    };
-
-    applications.push(newApplication);
-
-    res.json({
-        message: "Application submitted",
-        application: newApplication
-    });
-});
-
-/* ---------------- ACCEPT APPLICATION ---------------- */
-
-app.put("/applications/accept/:id", (req, res) => {
-
-    const id = parseInt(req.params.id);
-
-    const application = applications.find(app =>
-        app.application_id === id
-    );
-
-    if (application) {
-
-        application.status = "Accepted";
-
-        res.json({
-            message: "Application accepted"
-        });
-
-    } else {
-
-        res.status(404).json({
-            message: "Application not found"
-        });
-    }
-});
-
-/* ---------------- REJECT APPLICATION ---------------- */
-
-app.put("/applications/reject/:id", (req, res) => {
-
-    const id = parseInt(req.params.id);
-
-    const application = applications.find(app =>
-        app.application_id === id
-    );
-
-    if (application) {
-
-        application.status = "Rejected";
-
-        res.json({
-            message: "Application rejected"
-        });
-
-    } else {
-
-        res.status(404).json({
-            message: "Application not found"
-        });
-    }
-});
-
-/* ---------------- START SERVER ---------------- */
-
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

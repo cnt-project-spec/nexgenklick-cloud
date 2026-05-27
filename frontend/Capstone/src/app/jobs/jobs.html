@@ -1,0 +1,37 @@
+<div class="container my-5">
+    <div *ngFor="let job of jobs; let i = index">
+        <div class="job-card p-4 mb-4 shadow-sm rounded bg-white position-relative">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 class="font-weight-bold mb-1">{{ job.Title }}</h3>
+                    <p class="text-muted mb-3">{{ job.Company?.Name }}</p>
+
+                    <ul class="list-unstyled mb-3">
+                        <li class="mb-2">
+                            <i class="zmdi zmdi-pin mr-2 text-primary"></i> {{ job.Location }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="zmdi zmdi-money mr-2 text-success"></i> {{ job.Salary }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="zmdi zmdi-time mr-2 text-warning"></i> {{ job.Type }}
+                        </li>
+                    </ul>
+
+                    <div class="d-flex">
+                        <span class="badge badge-light border mr-2">HTML</span>
+                        <span class="badge badge-light border mr-2">CSS</span>
+                        <span class="badge badge-light border mr-2">JavaScript</span>
+                        <span class="badge badge-light border">React</span>
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary btn-lg px-4" [routerLink]="['/intern',job.InternID]">Apply Now</button>
+            </div>
+            <br>
+        </div>
+    </div>
+
+
+</div>
