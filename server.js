@@ -1,168 +1,229 @@
-const express = require('express');
-const sql = require('mssql');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 
-const config = {
-  user: 'adminuser',
-  password: 'Diba12@@',
-  server: 'internship-server123.database.windows.net',
-  database: 'InternshipPortalDB',
-  options: {
-    encrypt: true,
-    trustServerCertificate: false
-  }
-};
+/* ---------------- USERS ---------------- */
 
-app.get('/', (req, res) => {
-  res.send('Backend is working!');
-});
-
-app.post('/register', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const { name, email, role } = req.body;
-
-    await sql.query`
-      INSERT INTO Users (name, email, role)
-      VALUES (${name}, ${email}, ${role})
-    `;
-
-    res.send('User saved in database!');
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-
-app.get('/users', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const result = await sql.query`
-      SELECT * FROM Users
-    `;
-
-    res.json(result.recordset);
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-app.post('/internships', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const { title, company, description } = req.body;
-
-    await sql.query`
-      INSERT INTO Internships (title, company, description)
-      VALUES (${title}, ${company}, ${description})
-    `;
-
-    res.send('Internship saved in database!');
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-
-app.get('/internships', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const result = await sql.query`
-      SELECT * FROM Internships
-    `;
-
-    res.json(result.recordset);
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-app.post('/apply', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const { user_id, internship_id } = req.body;
-
-    await sql.query`
-      INSERT INTO Applications (user_id, internship_id, status)
-      VALUES (${user_id}, ${internship_id}, 'Pending')
-    `;
-
-    res.send('Application submitted successfully!');
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-app.get('/applications', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const result = await sql.query`
-      SELECT * FROM Applications
-    `;
-
-    res.json(result.recordset);
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-app.put('/applications/:id/status', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const applicationId = req.params.id;
-    const { status } = req.body;
-
-    await sql.query`
-      UPDATE Applications
-      SET status = ${status}
-      WHERE application_id = ${applicationId}
-    `;
-
-    res.send('Application status updated successfully!');
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-app.delete('/applications/:id', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const applicationId = req.params.id;
-
-    await sql.query`
-      DELETE FROM Applications
-      WHERE application_id = ${applicationId}
-    `;
-
-    res.send('Application deleted successfully!');
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
-});
-app.post('/login', async (req, res) => {
-  try {
-    await sql.connect(config);
-
-    const { email } = req.body;
-
-    const result = await sql.query`
-      SELECT * FROM Users
-      WHERE email = ${email}
-    `;
-
-    if (result.recordset.length > 0) {
-      res.send('Login successful');
-    } else {
-      res.send('User not found');
+let users = [
+    {
+        user_id: 1,
+        name: "Diba",
+        email: "diba@test.com",
+        role: "student"
     }
+];
 
-  } catch (err) {
-    res.send('Error: ' + err.message);
-  }
+/* ---------------- APPLICATIONS ---------------- */
+
+let applications = [
+    {
+        application_id: 1,
+        student_name: "Diba",
+        company: "NexGenKlick",
+        position: "Backend Intern",
+        status: "Pending"
+    }
+];
+
+/* ---------------- HOME ---------------- */
+
+app.get("/", (req, res) => {
+    res.send("Backend is working!");
 });
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+
+/* ---------------- GET USERS ---------------- */
+
+app.get("/users", (req, res) => {
+    res.json(users);
+});
+
+/* ---------------- ADD USER ---------------- */
+
+app.post("/users", (req, res) => {
+
+    const newUser = {
+        user_id: users.length + 1,
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    };
+
+    users.push(newUser);
+
+    res.json({
+        message: "User added",
+        user: newUser
+    });
+});
+
+/* ---------------- DELETE USER ---------------- */
+
+app.delete("/users/:id", (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    users = users.filter(user =>
+        user.user_id !== id
+    );
+
+    res.json({
+        message: "User deleted"
+    });
+});
+
+/* ---------------- EDIT USER ---------------- */
+
+app.put("/users/:id", (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    const user = users.find(user =>
+        user.user_id === id
+    );
+
+    if (user) {
+
+        user.name = req.body.name;
+        user.email = req.body.email;
+        user.role = req.body.role;
+
+        res.json({
+            message: "User updated"
+        });
+
+    } else {
+
+        res.status(404).json({
+            message: "User not found"
+        });
+    }
+});
+
+/* ---------------- SEARCH USER ---------------- */
+
+app.get("/search/:name", (req, res) => {
+
+    const name = req.params.name.toLowerCase();
+
+    const filteredUsers = users.filter(user =>
+        user.name.toLowerCase().includes(name)
+    );
+
+    res.json(filteredUsers);
+});
+
+/* ---------------- LOGIN ---------------- */
+
+app.post("/login", (req, res) => {
+
+    const email = req.body.email;
+
+    const foundUser = users.find(user =>
+        user.email === email
+    );
+
+    if (foundUser) {
+
+        res.json({
+            success: true,
+            message: "Login successful"
+        });
+
+    } else {
+
+        res.json({
+            success: false,
+            message: "User not found"
+        });
+    }
+});
+
+/* ---------------- GET APPLICATIONS ---------------- */
+
+app.get("/applications", (req, res) => {
+    res.json(applications);
+});
+
+/* ---------------- ADD APPLICATION ---------------- */
+
+app.post("/applications", (req, res) => {
+
+    const newApplication = {
+        application_id: applications.length + 1,
+        student_name: req.body.student_name,
+        company: req.body.company,
+        position: req.body.position,
+        status: "Pending"
+    };
+
+    applications.push(newApplication);
+
+    res.json({
+        message: "Application submitted",
+        application: newApplication
+    });
+});
+
+/* ---------------- ACCEPT APPLICATION ---------------- */
+
+app.put("/applications/accept/:id", (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    const application = applications.find(app =>
+        app.application_id === id
+    );
+
+    if (application) {
+
+        application.status = "Accepted";
+
+        res.json({
+            message: "Application accepted"
+        });
+
+    } else {
+
+        res.status(404).json({
+            message: "Application not found"
+        });
+    }
+});
+
+/* ---------------- REJECT APPLICATION ---------------- */
+
+app.put("/applications/reject/:id", (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    const application = applications.find(app =>
+        app.application_id === id
+    );
+
+    if (application) {
+
+        application.status = "Rejected";
+
+        res.json({
+            message: "Application rejected"
+        });
+
+    } else {
+
+        res.status(404).json({
+            message: "Application not found"
+        });
+    }
+});
+
+/* ---------------- START SERVER ---------------- */
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
