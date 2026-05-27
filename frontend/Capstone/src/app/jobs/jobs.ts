@@ -19,9 +19,11 @@ export class Jobs {
 
   ngOnInit(): void{
     console.log("Component initialized");
-    this.jobs= this.appService.GetJobs()
-
-    console.log("Test \n"+ JSON.stringify(this.jobs) + " \nEnd ");
+    // this.jobs= this.appService.GetJobs()
+    this.appService.getUsers();
+    // console.log("Test \n"+ JSON.stringify(this.jobs) + " \nEnd ");
     // getJobs
+
+    
   }
 }

@@ -1,11 +1,14 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const sql = require('mssql');
 
 const app = express();
 const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
+
+// Enable CORS for Angular
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 let users = [];
 let applications = [];

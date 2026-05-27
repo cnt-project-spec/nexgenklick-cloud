@@ -5,5 +5,13 @@
 
   "scripts": {
     "start": "node server.js"
+<<<<<<< HEAD
+=======
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.2",
+    "mssql": "^12.5.4"
+>>>>>>> Frontend
   }
 }
