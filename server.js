@@ -1,103 +1,173 @@
 const express = require('express');
+const cors = require('cors');
 const sql = require('mssql');
 
 const app = express();
-const PORT = 5000;
-
-app.use(cors());
 app.use(express.json());
 
 // Enable CORS for Angular
 app.use(cors({ origin: 'http://localhost:4200' }));
 
-let users = [];
-let applications = [];
+const config = {
+  user: 'adminuser',
+  password: 'Diba12@@',
+  server: 'internship-server123.database.windows.net',
+  database: 'InternshipPortalDB',
+  options: {
+    encrypt: true,
+    trustServerCertificate: false
+  }
+};
 
-// Home Route
-app.get("/", (req, res) => {
-  res.send("Internship Portal Backend Running");
+app.get('/', (req, res) => {
+  res.send('Backend is working!');
 });
 
-// Register User
-app.post("/api/users", (req, res) => {
-  const user = {
-    id: users.length + 1,
-    name: req.body.name,
-    email: req.body.email,
-    role: req.body.role
-  };
+app.post('/register', async (req, res) => {
+  try {
+    await sql.connect(config);
 
-  users.push(user);
-  res.json(user);
-});
+    const { name, email, role } = req.body;
 
-// Get Users
-app.get("/api/users", (req, res) => {
-  res.json(users);
-});
+    await sql.query`
+      INSERT INTO Users (name, email, role)
+      VALUES (${name}, ${email}, ${role})
+    `;
 
-// Delete User
-app.delete("/api/users/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-
-  users = users.filter(user => user.id !== id);
-
-  res.json({
-    message: "User deleted successfully"
-  });
-});
-
-// Internship Application
-app.post("/api/applications", (req, res) => {
-  const application = {
-    id: applications.length + 1,
-    studentName: req.body.studentName,
-    companyName: req.body.companyName,
-    position: req.body.position,
-    status: "Pending"
-  };
-
-  applications.push(application);
-  res.json(application);
-});
-
-// Get Applications
-app.get("/api/applications", (req, res) => {
-  res.json(applications);
-});
-
-// Accept Application
-app.put("/api/applications/:id/accept", (req, res) => {
-  const id = parseInt(req.params.id);
-
-  const application = applications.find(app => app.id === id);
-
-  if (application) {
-    application.status = "Accepted";
-    res.json(application);
-  } else {
-    res.status(404).json({
-      message: "Application not found"
-    });
+    res.send('User saved in database!');
+  } catch (err) {
+    res.send('Error: ' + err.message);
   }
 });
 
-// Reject Application
-app.put("/api/applications/:id/reject", (req, res) => {
-  const id = parseInt(req.params.id);
+app.get('/users', async (req, res) => {
+  try {
+    await sql.connect(config);
 
-  const application = applications.find(app => app.id === id);
+    const result = await sql.query`
+      SELECT * FROM Users
+    `;
 
-  if (application) {
-    application.status = "Rejected";
-    res.json(application);
-  } else {
-    res.status(404).json({
-      message: "Application not found"
-    });
+    res.json(result.recordset);
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+app.post('/internships', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const { title, company, description } = req.body;
+
+    await sql.query`
+      INSERT INTO Internships (title, company, description)
+      VALUES (${title}, ${company}, ${description})
+    `;
+
+    res.send('Internship saved in database!');
+  } catch (err) {
+    res.send('Error: ' + err.message);
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.get('/internships', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const result = await sql.query`
+      SELECT * FROM Internships
+    `;
+
+    res.json(result.recordset);
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+app.post('/apply', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const { user_id, internship_id } = req.body;
+
+    await sql.query`
+      INSERT INTO Applications (user_id, internship_id, status)
+      VALUES (${user_id}, ${internship_id}, 'Pending')
+    `;
+
+    res.send('Application submitted successfully!');
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+app.get('/applications', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const result = await sql.query`
+      SELECT * FROM Applications
+    `;
+
+    res.json(result.recordset);
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+app.put('/applications/:id/status', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const applicationId = req.params.id;
+    const { status } = req.body;
+
+    await sql.query`
+      UPDATE Applications
+      SET status = ${status}
+      WHERE application_id = ${applicationId}
+    `;
+
+    res.send('Application status updated successfully!');
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+app.delete('/applications/:id', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const applicationId = req.params.id;
+
+    await sql.query`
+      DELETE FROM Applications
+      WHERE application_id = ${applicationId}
+    `;
+
+    res.send('Application deleted successfully!');
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+app.post('/login', async (req, res) => {
+  try {
+    await sql.connect(config);
+
+    const { email } = req.body;
+
+    const result = await sql.query`
+      SELECT * FROM Users
+      WHERE email = ${email}
+    `;
+
+    if (result.recordset.length > 0) {
+      res.send('Login successful');
+    } else {
+      res.send('User not found');
+    }
+
+  } catch (err) {
+    res.send('Error: ' + err.message);
+  }
+});
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
