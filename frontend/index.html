@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Internship Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h1>Internship Portal</h1>
+
+        <ul>
+            <li>Home</li>
+            <li>Users</li>
+            <li>Login</li>
+            <li>Applications</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <h1>Internship Portal</h1>
+
+        <!-- Dashboard -->
+
+        <h2>Dashboard</h2>
+
+        <div class="dashboard">
+
+            <div class="dashboard-card">
+                <h3>Total Users</h3>
+                <p id="totalUsers">0</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Total Applications</h3>
+                <p id="totalApplications">0</p>
+            </div>
+
+        </div>
+
+        <!-- Register -->
+
+        <h2>Register User</h2>
+
+        <div class="form-group">
+
+            <input type="text" id="name" placeholder="Enter Name">
+
+            <input type="email" id="email" placeholder="Enter Email">
+
+            <input type="text" id="role" placeholder="Enter Role">
+
+            <button onclick="registerUser()">
+                Register
+            </button>
+
+        </div>
+
+        <!-- Login -->
+
+        <h2>Login</h2>
+
+        <div class="form-group">
+
+            <input type="email" id="loginEmail" placeholder="Enter Email">
+
+            <button onclick="loginUser()">
+                Login
+            </button>
+
+        </div>
+
+        <!-- Internship Application -->
+
+        <h2>Internship Application</h2>
+
+        <div class="form-group">
+
+            <input type="text" id="studentName" placeholder="Student Name">
+
+            <input type="text" id="companyName" placeholder="Company Name">
+
+            <input type="text" id="position" placeholder="Position">
+
+            <button onclick="applyInternship()">
+                Apply
+            </button>
+
+        </div>
+
+        <!-- Applications -->
+
+        <h2>Applications List</h2>
+
+        <div id="applicationsList"></div>
+
+        <!-- Notifications -->
+
+        <h2>Notifications</h2>
+
+        <div id="notificationBox" class="card">
+            <p>No notifications yet</p>
+        </div>
+
+        <!-- Search -->
+
+        <h2>Search Users</h2>
+
+        <div class="form-group">
+
+            <input type="text" id="searchInput" placeholder="Search user by name">
+
+            <button onclick="searchUsers()">
+                Search
+            </button>
+
+        </div>
+
+        <!-- Users -->
+
+        <h2>Users List</h2>
+
+        <div id="usersList"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
