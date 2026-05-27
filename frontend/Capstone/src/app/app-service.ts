@@ -8,9 +8,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppService {
   private dummyData= new DummyData;
-  private mainURl= "https://localhost:4200";
+  private mainURl= "http://localhost:3000/";
   
   constructor(private http:HttpClient){}
+
+  ConnectBackend(): void{
+    this.http.get(this.mainURl, { responseType: 'text' }).subscribe(res => {
+      console.log(res);
+    })
+
+  }
+
+  getUsers(): any{
+    var usersUrl= this.mainURl+"users";
+
+    this.http.get(usersUrl).subscribe(res =>{
+      console.log(res);
+    })
+
+  }
+
   GetJobs(): InternModel[]{
     var jobsUrl=this.mainURl+"/api/jobs"
 

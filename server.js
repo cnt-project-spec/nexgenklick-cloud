@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const sql = require('mssql');
 
 const app = express();
 app.use(express.json());
+
+// Enable CORS for Angular
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 const config = {
   user: 'adminuser',

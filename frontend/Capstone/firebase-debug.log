@@ -1,0 +1,79 @@
+[debug] [2026-05-27T19:45:35.352Z] ----------------------------------------------------------------------
+[debug] [2026-05-27T19:45:35.355Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2026-05-27T19:45:35.356Z] CLI Version:   15.18.0
+[debug] [2026-05-27T19:45:35.356Z] Platform:      win32
+[debug] [2026-05-27T19:45:35.356Z] Node Version:  v24.15.0
+[debug] [2026-05-27T19:45:35.357Z] Time:          Wed May 27 2026 15:45:35 GMT-0400 (Eastern Daylight Time)
+[debug] [2026-05-27T19:45:35.357Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\uriga\Documents\Project\nexgenklick-cloud\frontend\Capstone
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2026-05-27T19:51:41.301Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-27T19:51:41.302Z] > authorizing via signed-in user (urigaetan@gmail.com)
+[debug] [2026-05-27T19:51:59.540Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:51:59.541Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:51:59.543Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-05-27T19:51:59.543Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"Milestone"}
+[debug] [2026-05-27T19:52:01.121Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-05-27T19:52:01.122Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_NOT_VALID","suggestedProjectId":"milestone-e6c03"}
+[debug] [2026-05-27T19:53:09.583Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:09.584Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:09.587Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-05-27T19:53:09.588Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"Milestone-es6701"}
+[debug] [2026-05-27T19:53:09.804Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-05-27T19:53:09.804Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_NOT_VALID","suggestedProjectId":"milestone-es6701"}
+[debug] [2026-05-27T19:53:13.698Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:13.699Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:13.702Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-05-27T19:53:13.702Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"Milestone-es6701q"}
+[debug] [2026-05-27T19:53:13.980Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-05-27T19:53:13.980Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_NOT_VALID","suggestedProjectId":"milestone-es6701q"}
+[debug] [2026-05-27T19:53:21.005Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:21.005Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:21.007Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-05-27T19:53:21.007Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"Milestone-es6701q"}
+[debug] [2026-05-27T19:53:21.309Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-05-27T19:53:21.309Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_NOT_VALID","suggestedProjectId":"milestone-es6701q"}
+[debug] [2026-05-27T19:53:28.629Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:28.630Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:28.631Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1/projects:checkProjectId [none]
+[debug] [2026-05-27T19:53:28.632Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"proposedId":"milestone-es6701q"}
+[debug] [2026-05-27T19:53:28.906Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1/projects:checkProjectId 200
+[debug] [2026-05-27T19:53:28.906Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1/projects:checkProjectId {"projectIdStatus":"PROJECT_ID_AVAILABLE","suggestedProjectId":"milestone-es6701q"}
+[debug] [2026-05-27T19:53:32.977Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:32.978Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:32.978Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-05-27T19:53:32.978Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"milestone-es6701q","name":"milestone-es6701q"}
+[debug] [2026-05-27T19:53:34.393Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-05-27T19:53:34.393Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.8059221775021194847"}
+[debug] [2026-05-27T19:53:34.395Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:34.395Z] Checked if tokens are valid: true, expires at: 1779913884636
+[debug] [2026-05-27T19:53:34.395Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8059221775021194847 [none]
+[debug] [2026-05-27T19:53:34.580Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8059221775021194847 200
+[debug] [2026-05-27T19:53:34.580Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8059221775021194847 {"name":"operations/create_project.global.8059221775021194847","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","ready":true},"done":true,"error":{"code":9,"message":"Callers must accept Terms of Service","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"TOS","subject":"cloud","description":"Callers must accept Terms of Service"}]}]}}
+[debug] [2026-05-27T19:53:34.746Z] FirebaseError: Callers must accept Terms of Service
+    at OperationPoller.poll (C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\operation-poller.js:25:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async createCloudProject (C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:237:29)
+    at async createFirebaseProjectAndLog (C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:102:9)
+    at async Object.doSetup (C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:64:24)
+    at async init (C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:98:13)
+    at async Command.initAction [as actionFn] (C:\Users\uriga\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\init.js:232:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
