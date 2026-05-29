@@ -81,10 +81,10 @@ export class DummyData{
             },
             user: {
                 user_Id: 1,
-                Full_Name: "Jane Doe",
-                is_Acive: true,
+                full_name: "Jane Doe",
+                is_active: true,
                 created_st: new Date("2026-01-01"),
-                Email: "jane.doe@example.com"
+                email: "jane.doe@example.com"
             }
         }
     }

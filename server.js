@@ -19,6 +19,7 @@ const config = {
   }
 };
 
+
 app.get('/', (req, res) => {
   res.send('Backend is working!');
 });
@@ -146,6 +147,7 @@ app.delete('/applications/:id', async (req, res) => {
     res.send('Error: ' + err.message);
   }
 });
+
 app.post('/login', async (req, res) => {
   try {
     await sql.connect(config);

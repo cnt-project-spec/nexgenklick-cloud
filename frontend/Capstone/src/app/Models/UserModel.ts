@@ -1,8 +1,11 @@
 export class UserModel{
     user_Id?: number;
-    Full_Name?: string;
-    is_Acive?: boolean;
+    full_name!: string;
+    is_active?: boolean;
     created_st?: Date;
-    Email!: string;
-    Password?: string;
+    email!: string;
+    password_hash?: string;
+    role_id?:number;
+    role?:string
+
 }
